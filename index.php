@@ -39,6 +39,7 @@
         <div class="disp_b">999
         </div>
     </div><div class="lose">Одна нога сдесь другая там</div>
+    <div class="win">Пока что все на месте. Еще партейку?</div>
     <script>
         let field = document.querySelector(".fieldd");
         let cell = document.querySelectorAll(".cell");
@@ -46,7 +47,5 @@
         var bombb = '<? echo $BOMB ?>';
         field.style.width = "calc( " + Math.sqrt(count) + "*31px )";
     </script>
-    <script src="count.js"></script>
     <script src="random.js"></script>
-    <script src="poisk.js"></script>
 </body>

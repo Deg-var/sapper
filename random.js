@@ -1,6 +1,11 @@
+let countb = document.getElementById("countb");
+let but = document.querySelector(".but");
+let bomb = document.querySelector(".bcount");
 let bbb = document.getElementById("bcount");
 let celll = count / 2.5;;
 let mass = [];
+let bombmass = [];
+let nobombmass = [];
 let field2 = document.querySelector(".fff");
 let v;
 let n;
@@ -12,11 +17,16 @@ let lfv;
 let lfn;
 let i;
 let lose = document.querySelector(".lose")
+let lozer = 1;
+let t;
+let win = document.querySelector(".win");
+let rezult = [];
+
 for (i = 0; i < count; i++) {
     mass[i] = i;
-    console.log(i);
+
 };
-console.log(mass);
+
 for (i = mass.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
     temp = mass[i];
@@ -73,28 +83,59 @@ for (i = 0; i < count; i++) {
         cell[i].textContent = cell[i].textContent.length;
     };
 }
+bbb.textContent = bombbs;
 for (i = 0; i < bombbs; i++) {
     cell[mass[i]].textContent = "B";
+    cell[mass[i]].classList.add("bomb");
+    bombmass.push(mass[i]);
+    console.log(bombmass)
 }
 for (i = 0; i < count; i++) {
     let t = parseInt([i], 10)
     cell[t].onclick = function() {
+        cell[t].style.color = "black";
         cell[t].style.backgroundColor = "grey";
+        cell[t].style.background = "url(2.png) 100%"
+    }
+    cell[t].oncontextmenu = function() {
+        cell[t].style.background = "url(1.png) 100%";
+        cell[t].style.color = "rgba(255, 255, 255, 0)";
+        nobombmass.push(t)
+        cell[t].classList.toggle("bomb")
+        let bomb1 = document.querySelectorAll(".bomb");
+        console.log(bomb1.length)
+        if (bomb1.length == 0) {
+            win.style.display = "block";
+            for (i = 0; i < count; i++) {
+                cell[i].disabled;
+                cell[i].style.background = "grey";
+                cell[i].style.color = "black";
+            }
+        }
+        for (i = 0; i < count; i++) {
+
+        }
+        return false
     }
 }
 for (i = 0; i < bombbs; i++) {
     let g = parseInt(mass[i], 10);
-    console.log(g);
     cell[g].onclick = function() {
+        for (i = 0; i < count; i++) {
+            cell[i].style.background = "grey";
+            cell[i].style.color = "black";
+        }
         for (i = 0; i < bombbs; i++) {
+            cell[mass[i]].style.background = "url(3.png) 100% red";
             cell[mass[i]].style.backgroundColor = "red";
-        };
-        lose.style.display = "block";
-    }
+            lose.style.display = "block";
+            cell[mass[i]].style.color = "black";
+        }
+    };
+
 }
-bbb.textContent = bombbs;
 field2.textContent = Math.sqrt(count) + "*" + Math.sqrt(count);
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
-}
+};

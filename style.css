@@ -1,10 +1,10 @@
 .cell {
-    background-color: rgb(189, 189, 189);
+    background: rgb(189, 189, 189);
     height: 30px;
     width: 30px;
     text-align: center;
     vertical-align: middle;
-    color: rgb(189, 189, 189)
+    color: rgba(255, 255, 255, 0);
 }
 
 .fieldd {
@@ -30,6 +30,14 @@
 }
 
 .lose {
+    position: absolute;
+    display: none;
+    background-color: rgb(199, 199, 199);
+    width: 600px;
+    font-size: 50px;
+}
+
+.win {
     position: absolute;
     display: none;
     background-color: rgb(199, 199, 199);
